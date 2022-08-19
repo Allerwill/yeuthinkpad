@@ -1,79 +1,84 @@
-# Flipkart-MERN
-Full-Stack Flipkart with Admin Dashboard & Paytm Payment Gateway.
+# mern-ecommerce
 
-[Visit Now](https://flipkartwebs.herokuapp.com/) 🚀
+> Frontend-> React JS
 
-## 🖥️ Tech Stack
-**Frontend:**
+> Backend-> Node JS & Express JS
 
-![reactjs](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)&nbsp;
-![react-router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)&nbsp;
-![redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)&nbsp;
-![tailwindcss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)&nbsp;
-![mui](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)&nbsp;
-![chart-js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)&nbsp;
+> Database-> MongoDB
 
-**Backend:**
+## Installation process
+1. #### clone the repo using this command
+    ```bash
+    git clone https://github.com/ashraf-kabir/mern-ecommerce.git
+    ```
+2. #### install npm packages
+    1. install backend packages
+    ```bash
+    cd mern-ecommerce
+    npm install
+    ```
+    2. install frontend packages
+    ```bash
+    cd client
+    npm install
+    ```
+3. go to the parent folder of mern-ecommerce & create .env for connection, JWT_SECRET, BRAINTREE_MERCHANT_ID, BRAINTREE_PUBLIC_KEY and BRAINTREE_PRIVATE_KEY.
 
-![nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)&nbsp;
-![expressjs](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)&nbsp;
-![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;
-![jwt](	https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)&nbsp;
+    ```bash
+    cd mern-ecommerce
+    sudo nano .env
+    ```
+    (ctrl+x to save & nano follow instruction there)
+    
+    ##### sample code for backend .env
+    ```env
+    MONGODB_URI=YOUR_MONGODB_URI
+    JWT_SECRET=YOUR_JWT_SECRET
+    BRAINTREE_MERCHANT_ID=YOUR_BRAINTREE_MERCHANT_ID
+    BRAINTREE_PUBLIC_KEY=YOUR_BRAINTREE_PUBLIC_KEY
+    BRAINTREE_PRIVATE_KEY=YOUR_BRAINTREE_PRIVATE_KEY
+    ```
+4.  create another .env file inside client directory for REACT_APP_API_URL.
 
-**Payment Gateway:**
+    ```bash
+    cd mern-ecommerce/client
+    sudo nano .env
+    ```
+    ##### sample code for frontend .env
+    ```env
+    REACT_APP_API_URL=YOUR_API_URL
+    ```
+    ##### Instructions:
+    1. for mongodb atlas database creation follow this tutorial->https://www.youtube.com/watch?v=KKyag6t98g8
+    2. you can use any random string as JWTSECRET
+    3. for localhost REACT_APP_API_URL is http://localhost:5000/api
+       but for heroku (server deployment) it will be different
+    4. #### note: add .env on .gitignore
+    5. for server deployment use secrets directly
 
-![paytm](https://img.shields.io/badge/Paytm-002970?style=for-the-badge&logo=paytm&logoColor=00BAF2)
+5. <b>deploy this project</b> on your local server by using this command
+    ```bash
+    cd mern-ecommerce
+    npm run dev
+    ```
+    #### note: both backend & frontend server will start at once with the above command.
 
-**Deployed On:**
+6. #### Database Structure: (Table: columns)
+    1. categories: _id, name, createdAt, updatedAt;
+    2. orders:  _id, status, products (Array), transaction_id, amount, address, user (Object), createdAt, updatedAt
+    3. products: _id, photo (Object), sold, name, description, price, category, shipping, quantity, createdAt, updatedAt
+    4. users: _id, role, history (Array), name, email, salt, hashed_password, createdAt, updatedAt
 
-![heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+### App Description:
+    1. user can view all products
+    2. user can view single product
+    3. user can search products and view products by category and price range
+    4. user can add to cart checkout products using credit card info
+    5. user can register & sign in
+    6. admin can create, edit, update & delete products
+    7. admin can create categories
+    8. admin can view ordered products
+    9. admin can change the status of a product (processing, shipped, delivered, etc.)
 
-**Image Management:** [Cloudinary](https://cloudinary.com/)
-**Mail Service:** [Sendgrid](https://sendgrid.com/)
-
-## 🚀 Features
-- Login/Signup User Account
-- Update Profile/Password User Account
-- Reset Password Mail using Sendgrid
-- Cart Add/Remove Items | Update Quantities
-- Save For Later Add/Remove Items
-- Wishlist Add/Remove Items
-- Products Pagination (Default 12 Products Per Page)
-- Product Search
-- Product Filters Based on Category/Ratings | Price Range
-- Shipping Info in Session Storage
-- My Orders (With All Filters)
-- Order Details of All Ordered Item
-- Users will receive mail when order placed with all details
-- Review Products User Account
-- Admin: Dashboard access to only admin roles
-- Admin: Update Order Status | Delete Order
-- Admin: Add/Update Products
-- Admin: Update User Data | Delete User
-- Admin: List Review of Product | Delete Review
-- Stock Management: Decrease stock of product when shipped
-
-## Sneak Peek of Admin Dashboard 🙈 :
-![Capture](https://user-images.githubusercontent.com/64949957/153995268-0cb769b9-e0ee-48ea-83c1-09b881df4101.PNG)
-
-<table>
-  <tr>
-    <td><img src="https://user-images.githubusercontent.com/64949957/153995383-367cbcc0-cce5-4523-a999-b8d92e44d6ab.jpg" alt="mockup" /></td>
-    <td><img src="https://user-images.githubusercontent.com/64949957/153995406-45e36cbc-8d42-4416-b23a-08ad592e4ebc.jpg" alt="mockups" /></td>
-  </tr>
-  <tr>
-    <td><img src="https://user-images.githubusercontent.com/64949957/153996560-bd631f30-46f0-4248-83b3-d8ce44a8f9e4.PNG" alt="mockup" /></td>
-    <td><img src="https://user-images.githubusercontent.com/64949957/153996577-57b1a82d-064a-49dc-9055-e2bceb854ab2.PNG" alt="mockups" /></td>
-  </tr>
-</table>
-
-<h2>📬 Contact</h2>
-
-If you want to contact me, you can reach me through below handles.
-
-[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jigar-sable)
-
-© 2022 Jigar Sable
-
-
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+6. <b>Deployed on</br> https://ecommerce-ak.herokuapp.com/ 
+7. raise a star to support me

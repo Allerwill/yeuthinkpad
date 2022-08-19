@@ -1,39 +1,42 @@
 {
-  "name": "flipkart",
+  "name": "mern-ecommerce",
   "version": "1.0.0",
-  "engines": {
-    "node": "v16.14.0",
-    "npm": "8.1.3"
-  },
-  "description": "Full Stack Flipkart Ecommerce",
-  "main": "backend/server.js",
+  "description": "ecommerce site",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "author": "Jigar Sable",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashraf-kabir/mern-ecommerce.git"
+  },
+  "keywords": [],
+  "author": "Ashraf Kabir",
+  "license": "MIT",
   "dependencies": {
-    "@sendgrid/mail": "^7.6.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.1",
-    "cloudinary": "^1.28.1",
-    "cookie-parser": "^1.4.6",
-    "dotenv": "^14.2.0",
-    "express": "^4.17.2",
-    "express-fileupload": "^1.2.1",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "braintree": "^2.23.0",
+    "concurrently": "^5.3.0",
+    "config": "^3.3.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-validator": "^5.3.1",
+    "formidable": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.7",
-    "nodemailer": "^6.7.2",
-    "paytmchecksum": "^1.5.0",
-    "stripe": "^8.200.0",
-    "uuid": "^8.3.2",
-    "validator": "^13.7.0"
-  },
-  "devDependencies": {
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
-  },
-  "keywords": []
+    "lodash": "^4.17.19",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.24",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "uuid": "^8.2.0",
+    "uuidv1": "^1.6.14"
+  }
 }
